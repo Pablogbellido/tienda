@@ -1,0 +1,285 @@
+/* colores de fondo */
+
+body {
+    background-color: #b4b4b4;
+}
+.container{
+  width:100%;
+  padding-right:0;
+  padding-left:0;
+}
+header {
+    background-color:white;
+    /*overflow: auto;*/
+}
+
+header a, header button {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+header a:hover, header button:hover {
+    color: #da1a18 !important;
+}
+#logo{
+    margin-top: -5%;
+}
+#headersuperior{
+  background-color:#d7d7d7;
+  margin-left:-1.1%;
+  margin-right:-1.1%;
+}
+#iniciarSesion {
+    color: white;
+}
+.logoClase{
+    width:10em;
+}
+input {
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+    border-radius: 3px;
+}
+
+#buscar input:focus {
+    border-bottom: solid 5px #da1a18;
+    transition: all 0.30s ease-in-out;
+    outline: 0;
+    box-shadow: #da1a18 1px 1px 1px;
+}
+
+input:focus::-webkit-input-placeholder {
+    font-style: italic;
+    transition: 0.9s;
+}
+
+#categorias {
+    background-color:black;
+}
+
+#categorias ul li a {
+    color:white;
+    text-decoration: none;
+}
+
+.separador {
+    color: #B28642;
+}
+
+/* color de marca de carrusel */
+
+.owl-page span {
+    background-color: #da1a18 !important;
+}
+
+#categorias ul li a:hover {
+    color: #da1a18;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.btn-red {
+    background-color: #da1a18;
+}
+
+.btn-red:hover {
+    background-color: #e93d3c;
+}
+
+header a[href="index.html"] img {
+    float: left;
+}
+
+form.form-inline {
+    float: left;
+}
+
+.form-control:focus {
+    border-color: #da1a18;
+    box-shadow: inset 0 1px 1px #da1a18, 0 0 8px #da1a18;
+}
+
+.container-fluid > .row {
+    padding-top: .5em;
+}
+
+.vertical-center {
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+}
+#btnEnviar{
+  background-color:#da1a18;
+  border-color:#e93d3c;
+}
+#btnEnviar:hover{
+  background-color:#e93d3c;
+}
+#buscar + button {
+    margin-left: 0.2em;
+}
+
+#btnCarrito {
+    color: #124E7D;
+}
+
+div#content {
+    background-color: white;
+}
+
+#btnCarrito {
+      color: white !important;
+}
+
+#btnCarrito:hover {
+    text-decoration: none !important;
+}
+
+.glyphicon-search {
+    color: white;
+}
+
+.dropdown-menu li a {
+    color: #1A6FB2 !important;
+}
+
+img.img-responsive + div.row h2 {
+    color: #da1a18;
+    font-weight: 500;
+}
+
+#filaCarrusel + .row h2 {
+    color:black;
+    border-bottom: 1px dotted black;
+}
+
+#filaProductos h3 {
+    color:black;
+}
+
+#filaProductos h3:first-child:hover {
+    text-decoration: none;
+    color: #da1a18;
+}
+
+hr {
+    border-color:black;
+}
+
+#formVenta select {
+    border: 1px solid #767670;
+}
+
+#otros:focus, input[type="date"]:focus, input[type="number"]:focus, input[type="file"]:focus, input[type="text"]:focus {
+    border-bottom: 2px solid #da1a18;
+}
+
+label[for="ofertas"] {
+    display: inline;
+}
+
+span.obligatorio {
+    color: #da1a18;
+}
+
+input[type="submit"].btn-red {
+    color: #d7d7d7;
+}
+
+ol.breadcrumb {
+    background-color: white;
+}
+
+.breadcrumb>li+li:before {
+    color: black;
+}
+
+ol.breadcrumb li a {
+    color: black;
+}
+
+ol.breadcrumb li a:hover {
+    text-decoration: none;
+    color: #da1a18;
+}
+
+div.producto {
+    border: 1px solid #ccccc5;
+    transition: 0.5s;
+}
+
+div.producto:hover {
+    box-shadow: 5px 5px 30px black;
+    transition: 0.3s;
+}
+
+div.producto h3, div.producto h4 {
+    color: black;
+}
+
+div.producto a:hover {
+    text-decoration: none;
+}
+
+#divChat {
+    background-color: white;
+    border: 1px solid #b1b1aa;
+}
+
+#divChat button {
+    color: #d7d7d7;
+}
+
+/* triángulos de respuesta de chat */
+
+span.triangle-left {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 12px 0 0;
+    border-color: #da1a18 transparent transparent transparent;
+}
+
+span.triangle-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 12px;
+    border-color: transparent transparent transparent #cccccc;
+}
+
+/* respuestas del chat */
+
+span.response {
+    background-color: #da1a18;
+    color: #d7d7d7;
+}
+
+span.clientResponse {
+    background-color: #cccccc;
+    color: black;
+}
+
+#carrito h3 + ul li a {
+    color: black !important;
+}
+
+#colPrecio {
+    border-radius: 5px;
+    border: 1px solid #b1b1aa;
+    padding: 1.2em;
+}
+
+p + button {
+    color: #d7d7d7;
+}
+
+p + button:hover {
+    color: #d7d7d7 !important;
+}
+
+.nav li a {
+    color: #da1a18;
+}
