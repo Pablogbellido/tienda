@@ -1,0 +1,28 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+    <div id="content" class="container">
+        <div class="row">
+            <ol class="breadcrumb col-sm-2">
+                <li><a href="{{ path('index') }}" title="Audio Master - Inicio">Inicio</a></li>
+                <li>{{ nombre|capitalize }}</li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-10">
+                <form>
+                    <label for="ordenar">Ordenar por:</label>
+                    <select name="ordenar" id="ordenar" class="form-control">
+                        <option value="popularidad">Popularidad</option>
+                        <option value="precioMenos">Precio: Ascendente &uarr;</option>
+                        <option value="precioMas">Precio: Descendente &darr;</option>
+                        <option value="novedades">Novedades</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <h1 class="col-sm-1"></h1>
+        </div>
+    </div>
+{% endblock %}

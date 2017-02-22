@@ -1,3 +1,7 @@
 {% for categoria in categorias %}
-    <li><a href="categoria/{{ categoria.nombre|lower }}" title="{{ categoria.nombre }}">{{ categoria.nombre }}</a></li>
+    {% if categoria.nombre == "Baterías" %}
+        <li><a href="{{ path('categoria', { "nombre": "baterias" }) }}" title="{{ categoria.nombre }}">{{ categoria.nombre }}</a></li>
+        {% else %}
+            <li><a href="{{ path('categoria', { "nombre": categoria.nombre|lower }) }}" title="{{ categoria.nombre }}">{{ categoria.nombre }}</a></li>
+        {% endif %}
 {% endfor %}
