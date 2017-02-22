@@ -5,8 +5,34 @@
     <link rel="stylesheet" href="{{ asset('js/owl-carousel/owl.theme.css') }}">
     <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <style>
+        #filaCarrusel {
+            overflow-x: hidden;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
+    <div class="row" id="filaCarrusel">
+        <div class="col-sm-12">
+            <div class="owl-carousel" id="carruselImagenes">
+                {% for foto in fotos %}
+                    <div>
+                        <img src="{{ asset(foto) }}" alt="Imagen">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $("#carruselImagenes").owlCarousel({
+                items: 1,
+                autoPlay: true
+            });
+        });
+    </script>
 {% endblock %}

@@ -100,14 +100,6 @@
                 <iframe src="{{ asset('banner/index.html') }}" style="width: 324px; height: 54px" frameBorder="0"></iframe>
                 <ul class="list-inline">
                     {{ render(controller('indexBundle:Categoria:categoria')) }}
-                    {#<li><a href="categorias.php?c=guitarras" title="Guitarras">Guitarras</a></li>#}
-                    {#<li><a href="categorias.php?c=bajos" title="Bajos">Bajos</a></li>#}
-                    {#<li><a href="categorias.php?c=teclados" title="Teclados">Teclados</a></li>#}
-                    {#<li><a href="categorias.php?c=baterias" title="Baterías">Baterías</a></li>#}
-                    {#<li><a href="categorias.php?c=dj" title="DJ">DJ</a></li>#}
-                    {#<li><a href="categorias.php?c=auriculares" title="Auriculares">Auriculares</a></li>#}
-                    {#<li><a href="categorias.php?c=pa" title="PA">PA</a></li>#}
-                    {#<li><a href="categorias.php?c=accesorios" title="Accesorios">Accesorios</a></li>#}
                     <li>
                         <button class="btn btn-red" id="btnBuscar" title="Desplegar cajón de búsqueda"><span id="iconoBuscar" class="glyphicon glyphicon-search"></span> <span class="caret" style="color: white;"></span></button>
                     </li>
@@ -124,7 +116,7 @@
                     </li>
                 </ul>
                 <!-- campo de búsqueda -->
-                <div id="divBusqueda" class="form-group" style="display: none; padding-bottom: 0.8em">
+                <div id="divBusqueda" class="form-group" style="display: none; padding-bottom: 0.8em; margin-bottom: 0">
                     <label for="buscar" style="color: white;">Introduce una búsqueda:</label>
                     <input type="text" name="buscar" id="buscar" class="form-control" style="text-align: left; width: 30%; margin: auto">
                     <button class="btn btn-red" title="Realizar búsqueda..." style="margin-top: .6em"><span class="glyphicon glyphicon-ok" style="color: white;"></span></button>
