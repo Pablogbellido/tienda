@@ -9,6 +9,10 @@
         #filaCarrusel {
             overflow-x: hidden;
         }
+
+        #filaCarrusel, #filaProductos {
+            background-color: white;
+        }
     </style>
 {% endblock %}
 
@@ -22,6 +26,23 @@
                     </div>
                 {% endfor %}
             </div>
+        </div>
+    </div>
+    <div class="row" id="filaProductos">
+        <div class="col-sm-3">
+            <h2>Novedades</h2>
+            {% for novedad in novedades %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="#" title="{{ novedad.descripcion }}">
+                            <img src="{{ asset(novedad.url) }}" alt="">
+                        </a>
+                        <a href="#"><h3>{{ novedad.marca }} {{ novedad.modelo }}</h3></a>
+                        <h3>{{ novedad.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

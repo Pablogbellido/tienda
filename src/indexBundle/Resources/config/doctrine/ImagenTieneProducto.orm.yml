@@ -1,0 +1,18 @@
+indexBundle\Entity\ImagenTieneProducto:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\ImagenTieneProductoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        imagenId:
+            type: integer
+            column: imagen_id
+        productoId:
+            type: integer
+            column: producto_id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,34 @@
+indexBundle\Entity\Producto:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\ProductoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        descripcion:
+            type: string
+            length: '500'
+        precio:
+            type: decimal
+            precision: 10
+            scale: 0
+        fechaAnadido:
+            type: datetime
+            column: fecha_anadido
+        categoriaId:
+            type: integer
+            column: categoria_id
+        marca:
+            type: string
+            length: '80'
+        modelo:
+            type: string
+            length: '120'
+        stockActual:
+            type: integer
+            column: stock_actual
+    lifecycleCallbacks: {  }
