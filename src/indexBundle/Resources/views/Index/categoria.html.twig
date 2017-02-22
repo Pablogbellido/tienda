@@ -1,0 +1,3 @@
+{% for categoria in categorias %}
+    <li><a href="categoria/{{ categoria.nombre|lower }}" title="{{ categoria.nombre }}">{{ categoria.nombre }}</a></li>
+{% endfor %}

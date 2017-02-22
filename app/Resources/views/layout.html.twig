@@ -14,12 +14,187 @@
             * {
                 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
             }
+
+            .glyphicon {
+                font-family: 'Glyphicons Halflings' !important;
+            }
         </style>
         {% block carrusel %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container" id="contenidoPrincipal">
+                <header>
+                    <div class="container-fluid">
+                        <div class="row" id="headersuperior">
+                            <ul class="list-inline col-sm-8">
+                                <li><a href="#" title="Contacto">Contacto</a></li>
+                                <li class="separador">|</li>
+                                <li><a href="#" title="Ayuda">Ayuda</a></li>
+                                <li class="separador">|</li>
+                                <li><a href="#" title="Sobre nosotros">Sobre nosotros</a></li>
+                            </ul>
+
+                            <ul id="areaClientes" class="list-inline col-sm-2">
+                                <li class="col-sm-6" id="enlaceForm"><a href="form.php" title="Ir a formulario">Formulario</a></li>
+                                <li>
+                                    <button type="button" class="dropdown-toggle btn-link" data-toggle="dropdown" id="btnAcceder" title="Acceder">Acceder <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu" id="dropInicioSesion">
+                                        <li id="itemInicio">
+                                            <h3 id="cabeceraInicio">Iniciar sesión</h3>
+                                            <form id="formInicio">
+                                                <div class="row" id="rowForm1">
+                                                    <div class="form-group col-sm-12">
+                                                        <label for="usuario">Usuario:</label>
+                                                        <input type="text" name="usuario" id="usuario" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="rowForm2">
+                                                    <div class="form-group col-sm-12">
+                                                        <label for="contrasena">Contraseña:</label>
+                                                        <input type="password" name="contrasena" id="contrasena" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="rowForm3">
+                                                    <div class="col-sm-12 col-sm-offset-1">
+                                                        <a href="#" title="¿No estás registrado?">¿No estás registrado?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="rowForm4">
+                                                    <div class="col-sm-12 col-sm-offset-2">
+                                                        <input type="submit" value="Iniciar sesión" class="btn btn-success" id="btnEnviar">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul id="redesSociales" class="list-inline col-sm-2">
+                                <li data-toggle="tooltip" data-placement="bottom" title="Facebook">
+                                    <a href="https://www.facebook.com/" title="Facebook">
+                                        <img src="{{ asset('images/social/facebook.ico') }}" width="24" height="24" alt="Facebook">
+                                    </a>
+                                </li>
+                                <li data-toggle="tooltip" data-placement="bottom" title="Instagram">
+                                    <a href="https://www.instagram.com/" title="Instagram">
+                                        <img src="{{ asset('images/social/instagram.ico') }}" width="24" height="24" alt="Instagram">
+                                    </a>
+                                </li>
+                                <li data-toggle="tooltip" data-placement="bottom" title="Twitter">
+                                    <a href="https://twitter.com/" title="Twitter">
+                                        <img src="{{ asset('images/social/twitter.ico') }}" width="24" height="24" alt="Twitter">
+                                    </a>
+                                </li>
+                                <li data-toggle="tooltip" data-placement="bottom" title="Youtube">
+                                    <a href="https://www.youtube.com/" title="YouTube">
+                                        <img src="{{ asset('images/social/youtube.ico') }}" width="24" height="24" alt="YouTube">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+            <section id="categorias">
+                <iframe src="{{ asset('banner/index.html') }}" style="width: 324px; height: 54px" frameBorder="0"></iframe>
+                <ul class="list-inline">
+                    {{ render(controller('indexBundle:Categoria:categoria')) }}
+                    {#<li><a href="categorias.php?c=guitarras" title="Guitarras">Guitarras</a></li>#}
+                    {#<li><a href="categorias.php?c=bajos" title="Bajos">Bajos</a></li>#}
+                    {#<li><a href="categorias.php?c=teclados" title="Teclados">Teclados</a></li>#}
+                    {#<li><a href="categorias.php?c=baterias" title="Baterías">Baterías</a></li>#}
+                    {#<li><a href="categorias.php?c=dj" title="DJ">DJ</a></li>#}
+                    {#<li><a href="categorias.php?c=auriculares" title="Auriculares">Auriculares</a></li>#}
+                    {#<li><a href="categorias.php?c=pa" title="PA">PA</a></li>#}
+                    {#<li><a href="categorias.php?c=accesorios" title="Accesorios">Accesorios</a></li>#}
+                    <li>
+                        <button class="btn btn-red" id="btnBuscar" title="Desplegar cajón de búsqueda"><span id="iconoBuscar" class="glyphicon glyphicon-search"></span> <span class="caret" style="color: white;"></span></button>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button id="btnCarrito" class="btn btn-red dropdown-toggle" type="button" data-toggle="dropdown" title="Carrito"><span class="glyphicon glyphicon-shopping-cart" id="iconoCarrito"></span></button>
+                            <ul class="dropdown-menu" id="carrito">
+                                <li>
+                                    <h3>Tu carrito</h3>
+                                    {% block carrito %}{% endblock %}
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <!-- campo de búsqueda -->
+                <div id="divBusqueda" class="form-group" style="display: none; padding-bottom: 0.8em">
+                    <label for="buscar" style="color: white;">Introduce una búsqueda:</label>
+                    <input type="text" name="buscar" id="buscar" class="form-control" style="text-align: left; width: 30%; margin: auto">
+                    <button class="btn btn-red" title="Realizar búsqueda..." style="margin-top: .6em"><span class="glyphicon glyphicon-ok" style="color: white;"></span></button>
+                </div>
+            </section>
+
+            {% block body %}{% endblock %}
+        </div>
+            <script>
+                window.onload = function () {
+
+                    // Mostrar input de búsqueda
+
+                    $("#btnBuscar").click(function () {
+                        if($("#divBusqueda").css("display") == "block") {
+                            $("#divBusqueda").slideUp();
+                        }
+                        else {
+                            $("#divBusqueda").slideDown();
+                        }
+                    });
+
+                    // Dropdown de inicio de sesión
+
+                    $('#btnAcceder').click(function () {
+                        dropDownFixPosition($('.caret'), $('.dropdown-menu'));
+                    });
+
+                    // Dropdown de carrito de compra
+
+                    $('#btnCarrito').click(function () {
+                        $("#carrito").slideDown();
+                    });
+
+                    $('[data-toggle="tooltip"]').tooltip();
+
+                    $(window).scroll(function () {
+                        $('#dropInicioSesion').hide();
+                        $('#carrito').hide();
+                    });
+
+                    $("body").click(function (e) {
+
+                        // Para dropdown de acceder
+                        if(e.target.id == "btnAcceder" || e.target.id == "itemInicio" || e.target.id == "cabeceraInicio" || e.target.id == "formInicio" || e.target.id == "usuario" || e.target.id == "contrasena" || e.target.id == "dropInicioSesion" || e.target.id == "rowForm1" || e.target.id == "rowForm2" || e.target.id == "rowForm3" || e.target.id == "rowForm4")
+                        {
+                            $("#dropInicioSesion").fadeIn();
+                        }
+                        else {
+                            $("#dropInicioSesion").fadeOut();
+                        }
+
+                        // arreglo dropdown carrito
+
+                        if(e.target.id != "btnCarrito" && e.target.id != "iconoCarrito") {
+                            $("#carrito").slideUp();
+                        }
+                        else {
+                            $("#carrito").slideDown();
+                        }
+                    });
+                };
+
+                function dropDownFixPosition(button, dropdown) {
+                    var dropDownTop = button.offset().top + button.outerHeight();
+
+                    dropdown.css('top', dropDownTop + 'px');
+                    dropdown.css('left', button.offset().left - 120 + 'px');
+                }
+            </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
