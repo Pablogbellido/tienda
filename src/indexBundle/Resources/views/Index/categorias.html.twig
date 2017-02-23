@@ -5,7 +5,18 @@
         <div class="row">
             <ol class="breadcrumb col-sm-2">
                 <li><a href="{{ path('index') }}" title="Audio Master - Inicio">Inicio</a></li>
-                <li>{{ nombre|capitalize }}</li>
+                {#<li>{{ nombre|capitalize }}</li>#}
+                <li>
+                    {% if nombre|length < 3 %}
+                        {{ nombre|upper }}
+                    {% else %}
+                        {% if nombre == "Baterias" %}
+                            Baterías
+                        {% else %}
+                            {{ nombre|capitalize }}
+                        {% endif %}
+                    {% endif %}
+                </li>
             </ol>
         </div>
         <div class="row">
@@ -22,7 +33,73 @@
             </div>
         </div>
         <div class="row">
-            <h1 class="col-sm-1"></h1>
+            <h1 class="col-sm-1">
+                {% if nombre|length < 3 %}
+                    {{ nombre|upper }}
+                {% else %}
+                    {% if nombre == "Baterias" %}
+                        Baterías
+                    {% else %}
+                        {{ nombre|capitalize }}
+                    {% endif %}
+                {% endif %}
+            </h1>
+        </div>
+        <div class="row">
+            <div id="divPrecio" class="col-sm-2">
+                <h2>Precio</h2>
+                <ul>
+                    <li>
+                        <div class="form-group">
+                            <label for="precioMin">Precio mínimo</label>
+                            <input type="range" name="precioMin" id="precioMin" min="1" max="3000" value="100">
+                            <span id="muestraPrecioMin">100&euro;</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="precioMax">Precio máximo</label>
+                            <input type="range" name="precioMax" id="precioMax" min="1" max="3000" value="100">
+                            <span id="muestraPrecioMax">100&euro;</span>
+                        </div>
+                    </li>
+                </ul>
+                <div id="divMarca">
+                    <div class="form-group">
+                        <label for="marca"><h2>Marca</h2></label>
+                        <select name="marca" id="marca" class="form-control">
+                            <option value="todas" selected>Todas</option>
+                            {% for marca in marcas %}
+                                <option value="{{ marca.marca }}">{{ marca.marca }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-offset-6" style="margin-bottom: 70px">
+                {% for producto in productos %}
+                    <div class="producto col-sm-3">
+                        <a href="#" title="{{ producto.marca }} {{ producto.modelo }}"><img src="{{ asset( producto.url) }}" alt="{{ producto.marca }} {{ producto.modelo }}">
+                            <h3>{{ producto.marca }} {{ producto.modelo }}</h3>
+                            <h4>{{ producto.precio }}&euro;</h4>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            document.getElementById("precioMin").oninput = function () {
+                document.getElementById("muestraPrecioMin").innerHTML = this.value + "&euro;";
+            };
+
+            document.getElementById("precioMax").oninput = function () {
+                document.getElementById("muestraPrecioMax").innerHTML = this.value + "&euro;";
+            }
+        });
+    </script>
 {% endblock %}

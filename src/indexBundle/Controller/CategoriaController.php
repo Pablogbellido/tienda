@@ -31,15 +31,29 @@ class CategoriaController extends Controller
                 WHERE p.id = itp.productoId
                       AND itp.imagenId = i.id
                       AND cat.id = p.categoriaId
-                      AND p.categoriaId = :idCat"
+                      AND p.categoriaId = :idCat
+                      GROUP BY p.marca, p.modelo"
             )->setParameter("idCat", $idCat);
 
             $productos = $query->getResult();
 
-            return $this->render("indexBundle:Index:categorias.html.twig", array("productos" => $productos, "nombre" => $nombreDef));
+            // Marcas de los productos que se encuentran en la categoría deseada
+
+            $em = $this->getDoctrine()->getManager();
+
+            $query = $em->createQuery(
+                "SELECT DISTINCT p.marca
+                FROM indexBundle:Producto p,
+                      indexBundle:Categoria c
+                WHERE p.categoriaId = c.id
+                  AND c.id = :idCat"
+            )->setParameter("idCat", $idCat);
+
+            $marcas = $query->getResult();
+
+            return $this->render("indexBundle:Index:categorias.html.twig", array("productos" => $productos, "nombre" => $nombreDef, "marcas" => $marcas));
         }
         else {
-            //echo "no hay";exit;
             return $this->render("indexBundle:Index:404.html.twig", array("nombre" => $nombre));
         }
     }
