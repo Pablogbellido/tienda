@@ -113,9 +113,13 @@ div#content {
     margin: auto;
 }
 
-#categorias ul li a {
+#categorias ul li a, #inicio {
     font-size: large;
     font-weight: bold;
+}
+
+#inicio {
+    font-style: italic;
 }
 
 #categorias ul li {

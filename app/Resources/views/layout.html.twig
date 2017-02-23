@@ -16,7 +16,11 @@
             }
 
             .glyphicon {
-                font-family: 'Glyphicons Halflings' !important;
+                font-family: 'Glyphicons Halflings', sans-serif !important;
+            }
+
+            body {
+                background-color: white;
             }
         </style>
         {% block carrusel %}{% endblock %}
@@ -34,7 +38,6 @@
                                 <li class="separador">|</li>
                                 <li><a href="#" title="Sobre nosotros">Sobre nosotros</a></li>
                             </ul>
-
                             <ul id="areaClientes" class="list-inline col-sm-2">
                                 <li class="col-sm-6" id="enlaceForm"><a href="form.php" title="Ir a formulario">Formulario</a></li>
                                 <li>
@@ -97,7 +100,8 @@
                     </div>
                 </header>
             <section id="categorias">
-                <iframe src="{{ asset('banner/index.html') }}" style="width: 324px; height: 54px" frameBorder="0"></iframe>
+                <a href="{{ path('index') }}" style="font-size: 24px; display: block; padding-top: 10px" id="inicio">AudioMaster - Tienda de instrumentos</a>
+                {#<iframe src="{{ asset('banner/index.html') }}" style="width: 324px; height: 54px" frameBorder="0"></iframe>#}
                 <ul class="list-inline">
                     {{ render(controller('indexBundle:Categoria:categoria')) }}
                     <li>

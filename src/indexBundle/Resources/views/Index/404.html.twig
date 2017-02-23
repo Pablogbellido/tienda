@@ -1,0 +1,21 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+    <style>
+        h1, h2, a {
+            text-align: center;
+            display: block;
+        }
+
+        h1 {
+            font-size: 450%;
+        }
+
+        h2 + a {
+            font-size: 150%;
+        }
+    </style>
+    <h1>404</h1>
+    <h2>No se ha encontrado la categoría "{{ nombre }}"</h2>
+    <a href="{{ path('index') }}">Volver a la página de inicio</a>
+{% endblock %}

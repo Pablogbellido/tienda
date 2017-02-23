@@ -59,7 +59,7 @@ input:focus::-webkit-input-placeholder {
     background-color:black;
 }
 
-#categorias ul li a {
+#categorias ul li a, #inicio {
     color:white;
     text-decoration: none;
 }
@@ -74,7 +74,7 @@ input:focus::-webkit-input-placeholder {
     background-color: #da1a18 !important;
 }
 
-#categorias ul li a:hover {
+#categorias ul li a:hover, #inicio:hover {
     color: #da1a18;
     transition: 0.2s;
     text-decoration: none;

@@ -36,10 +36,11 @@ class CategoriaController extends Controller
 
             $productos = $query->getResult();
 
-            return $this->render("indexBundle:Index:muestraCat.html.twig", array("productos" => $productos, "nombre" => $nombreDef));
+            return $this->render("indexBundle:Index:categorias.html.twig", array("productos" => $productos, "nombre" => $nombreDef));
         }
         else {
-            echo "no hay";exit;
+            //echo "no hay";exit;
+            return $this->render("indexBundle:Index:404.html.twig", array("nombre" => $nombre));
         }
     }
 
@@ -49,6 +50,6 @@ class CategoriaController extends Controller
             ->getRepository("indexBundle:Categoria")
             ->findAll();
 
-        return $this->render('indexBundle:Index:categoria.html.twig', array("categorias" => $categorias));
+        return $this->render('indexBundle:Index:nombre_categorias.html.twig', array("categorias" => $categorias));
     }
 }
