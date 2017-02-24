@@ -55,7 +55,24 @@ class IndexController extends Controller
             }
         }
 
-        // ---------------
+        // ----------- Productos más vendidos ------------
+
+        $query = $em->createQuery(
+            "SELECT DISTINCT COUNT(fd.productoId) cant, p.id 
+                FROM indexBundle:Producto p,
+                      indexBundle:Imagen i,
+                      indexBundle:ImagenTieneProducto itp,
+                      indexBundle:FacturaDetalle fd
+                WHERE p.id = itp.productoId
+                      AND itp.imagenId = i.id
+                      AND p.id = fd.productoId
+                      GROUP BY fd.productoId, p.id, i.id, itp.imagenId, itp.productoId
+                      ORDER BY cant DESC, p.fechaAnadido DESC"
+        )->setMaxResults(2);
+
+        $masVendidos = $query->getResult();
+
+        var_dump($masVendidos);exit;
 
         return $this->render('indexBundle:Index:index.html.twig', array("fotos" => $fotos, "novedades" => $resDef));
     }

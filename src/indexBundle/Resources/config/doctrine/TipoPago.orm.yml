@@ -1,0 +1,15 @@
+indexBundle\Entity\TipoPago:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\TipoPagoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        metodo:
+            type: string
+            length: '45'
+    lifecycleCallbacks: {  }

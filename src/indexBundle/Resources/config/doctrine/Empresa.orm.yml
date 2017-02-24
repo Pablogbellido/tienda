@@ -1,0 +1,27 @@
+indexBundle\Entity\Empresa:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\EmpresaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '45'
+        direccion:
+            type: string
+            length: '45'
+        telefono:
+            type: string
+            length: '9'
+        cif:
+            type: string
+            length: '8'
+        email:
+            type: string
+            length: '75'
+    lifecycleCallbacks: {  }

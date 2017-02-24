@@ -1,0 +1,30 @@
+indexBundle\Entity\FacturaDetalle:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\FacturaDetalleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        productoId:
+            type: integer
+            column: producto_id
+        facturaId:
+            type: integer
+            column: factura_id
+        cantidad:
+            type: integer
+        precioUnitario:
+            type: decimal
+            precision: 10
+            scale: '0'
+            column: precio_unitario
+        tipoIva:
+            type: integer
+            column: tipo_iva
+        descuento:
+            type: integer
+    lifecycleCallbacks: {  }

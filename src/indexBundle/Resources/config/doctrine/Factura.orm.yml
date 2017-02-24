@@ -1,0 +1,27 @@
+indexBundle\Entity\Factura:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\FacturaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fecha:
+            type: datetime
+        clienteId:
+            type: integer
+            column: cliente_id
+        empresaId:
+            type: integer
+            column: empresa_id
+        codFact:
+            type: string
+            length: '45'
+            column: cod_fact
+        tipoPagoId:
+            type: integer
+            column: tipo_pago_id
+    lifecycleCallbacks: {  }
