@@ -1,0 +1,31 @@
+indexBundle\Entity\Cliente:
+    type: entity
+    table: null
+    repositoryClass: indexBundle\Repository\ClienteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        usuario:
+            type: string
+            length: '45'
+        contrasena:
+            type: string
+            length: '45'
+        nombre:
+            type: string
+            length: '45'
+        apellidos:
+            type: string
+            length: '45'
+        email:
+            type: string
+            length: '45'
+        fUltimaSesion:
+            type: date
+            nullable: true
+            column: f_ultima_sesion
+    lifecycleCallbacks: {  }

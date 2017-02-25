@@ -14,6 +14,11 @@
             font-size: 16px;
         }
     </style>
+    {% for error in app.session.flashbag.get("error") %}
+     <div class="alert alert-danger alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto; margin-top: 10px">
+         <p>{{ error }}</p>
+     </div>
+    {% endfor %}
 <h1 style="text-align: center">Registro</h1>
     <form action="{{ path('registro') }}" class="col-sm-offset-4 col-sm-4" method="post" id="formRegistro">
         <div class="form-group">
@@ -68,7 +73,13 @@
                     alert("Debe aceptar las condiciones del servicio");
                     return false;
                 }
-            })
-        })
+            });
+
+            if($("#mensajeError").length) {
+                setTimeout(function () {
+                    $("#mensajeError").fadeOut("slow");
+                }, 5000);
+            }
+        });
     </script>
 {% endblock %}
