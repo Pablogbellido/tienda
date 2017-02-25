@@ -5,3 +5,7 @@ index:
 categoria:
     path: /categoria/{nombre}
     defaults: { _controller: indexBundle:Categoria:index}
+
+registro:
+    path: /registro
+    defaults: { _controller: indexBundle:Registro:registro}

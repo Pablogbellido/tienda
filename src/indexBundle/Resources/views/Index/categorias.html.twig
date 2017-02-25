@@ -1,5 +1,15 @@
 {% extends "::layout.html.twig" %}
 
+{% block title %}Audio Master - {% if nombre|length < 3 %}
+    {{ nombre|upper }}
+{% else %}
+    {% if nombre == "Baterias" %}
+        Baterías
+    {% else %}
+        {{ nombre|capitalize }}
+    {% endif %}
+{% endif %}{% endblock %}
+
 {% block body %}
     <div id="content" class="container">
         <div class="row">
