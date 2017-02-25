@@ -109,13 +109,19 @@
                     </li>
                     <li>
                         <div class="dropdown">
-                            <button id="btnCarrito" class="btn btn-red dropdown-toggle" type="button" data-toggle="dropdown" title="Carrito"><span class="glyphicon glyphicon-shopping-cart" id="iconoCarrito"></span></button>
-                            <ul class="dropdown-menu" id="carrito">
-                                <li>
-                                    <h3>Tu carrito</h3>
-                                    {% block carrito %}{% endblock %}
-                                </li>
-                            </ul>
+                            {% block carrito %}{% endblock %}
+                            {#<button id="btnCarrito" class="btn btn-red dropdown-toggle" type="button" data-toggle="dropdown" title="Carrito"><span class="glyphicon glyphicon-shopping-cart" id="iconoCarrito"></span></button>#}
+                            {#<ul class="dropdown-menu" id="carrito">#}
+                                {#{% set usuario =  app.session.get("usuario") %}#}
+                                {#{% if usuario is defined %}#}
+                                {#<li>#}
+                                    {#<h3>Tu carrito</h3>#}
+                                    {#{% block carrito %}{% endblock %}#}
+                                {#</li>#}
+                                {#{% else %}#}
+                                    {#<li>Debes iniciar sesión para ver tu carrito</li>#}
+                                {#{% endif %}#}
+                            {#</ul>#}
                         </div>
                     </li>
                 </ul>

@@ -29,16 +29,48 @@
         </div>
     </div>
     <div class="row" id="filaProductos">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <h2>Novedades</h2>
             {% for novedad in novedades %}
                 <div class="row">
                     <div class="col-sm-12">
                         <a href="#" title="{{ novedad.descripcion }}">
-                            <img src="{{ asset(novedad.url) }}" alt="">
+                            <img src="{{ asset(novedad.url) }}" alt="{{ novedad.marca }} {{ novedad.modelo }}">
                         </a>
                         <a href="#"><h3>{{ novedad.marca }} {{ novedad.modelo }}</h3></a>
                         <h3>{{ novedad.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="col-sm-4">
+            <h2>Más vendidos</h2>
+            {% for masVendido in masVendidos %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="#" title="{{ masVendido.descripcion }}
+Unidades vendidas: {{ masVendido.cant }}">
+                            <img src="{{ asset(masVendido.url) }}" class="imgproducto" alt="{{ masVendido.marca }} {{ masVendido.modelo }}">
+                        </a>
+                        <a href="#" title="{{ masVendido.marca }} {{ masVendido.modelo }}"><h3>{{ masVendido.marca }} {{ masVendido.modelo }}</h3></a>
+                        <h3>{{ masVendido.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="col-sm-4">
+            <h2>Últimas unidades</h2>
+            {% for ultUni in ultimasUnidades %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="#" title="{{ ultUni.descripcion }}">
+                            <img src="{{ asset(ultUni.url) }}" class="imgproducto" alt="{{ ultUni.marca }} {{ ultUni.modelo }}">
+                        </a>
+                        <span class="badge" style="margin: auto; display: block; width: 32%">Quedan {{ ultUni.stockActual }} unidades</span>
+                        <a href="#" title="{{ ultUni.marca }} {{ ultUni.modelo }}"><h3>{{ ultUni.marca }} {{ ultUni.modelo }}</h3></a>
+                        <h3>{{ ultUni.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
                     </div>
                 </div>
                 <hr>

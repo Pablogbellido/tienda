@@ -29,10 +29,6 @@ class IndexController extends Controller
 
         // -------------------- Novedades ----------------
 
-//        $novedades = $this->getDoctrine()
-//                            ->getRepository("indexBundle:Producto")
-//                            ->findBy(array(), array("fechaAnadido" => "DESC"), 2);
-
         $em = $this->getDoctrine()->getManager();
 
         $novedades = $em->createQuery(
@@ -58,7 +54,7 @@ class IndexController extends Controller
         // ----------- Productos más vendidos ------------
 
         $query = $em->createQuery(
-            "SELECT DISTINCT COUNT(fd.productoId) cant, p.id 
+            "SELECT COUNT(fd.productoId) cant, p.id, p.marca, p.modelo, p.descripcion, p.precio, i.url 
                 FROM indexBundle:Producto p,
                       indexBundle:Imagen i,
                       indexBundle:ImagenTieneProducto itp,
@@ -66,14 +62,43 @@ class IndexController extends Controller
                 WHERE p.id = itp.productoId
                       AND itp.imagenId = i.id
                       AND p.id = fd.productoId
-                      GROUP BY fd.productoId, p.id, i.id, itp.imagenId, itp.productoId
+                      GROUP BY fd.productoId, p.id, i.id, itp.imagenId, itp.productoId, p.marca, p.modelo
                       ORDER BY cant DESC, p.fechaAnadido DESC"
-        )->setMaxResults(2);
+        )->setMaxResults(4);
 
         $masVendidos = $query->getResult();
 
-        var_dump($masVendidos);exit;
+        $masDef = array();
 
-        return $this->render('indexBundle:Index:index.html.twig', array("fotos" => $fotos, "novedades" => $resDef));
+        for($i = 0; $i < count($masVendidos); $i++) {
+            if($i % 2 == 0) {
+                array_push($masDef, $masVendidos[$i]);
+            }
+        }
+
+        // ---------- Últimas unidades ---------
+
+        $query = $em->createQuery(
+            "SELECT p.marca, p.modelo, p.descripcion, p.precio, i.url, p.stockActual 
+                FROM indexBundle:Producto p,
+                      indexBundle:Imagen i,
+                      indexBundle:ImagenTieneProducto itp
+                WHERE p.id = itp.productoId
+                      AND itp.imagenId = i.id
+                      GROUP BY p.id, i.id, itp.imagenId, itp.productoId, p.marca, p.modelo
+                ORDER BY p.stockActual ASC"
+        )->setMaxResults(4);
+
+        $ultimasUni = $query->getResult();
+
+        $ultimasDef = array();
+
+        for($i = 0; $i < count($ultimasUni); $i++) {
+            if($i % 2 == 0) {
+                array_push($ultimasDef, $ultimasUni[$i]);
+            }
+        }
+
+        return $this->render('indexBundle:Index:index.html.twig', array("fotos" => $fotos, "novedades" => $resDef, "masVendidos" => $masDef, "ultimasUnidades" => $ultimasDef));
     }
 }
