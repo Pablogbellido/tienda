@@ -23,6 +23,42 @@
                 background-color: white;
             }
         </style>
+        <script>
+            window.onload = function () {
+
+                // Mostrar input de búsqueda
+
+                $("#btnBuscar").click(function () {
+                    if($("#divBusqueda").css("display") == "block") {
+                        $("#divBusqueda").slideUp();
+                    }
+                    else {
+                        $("#divBusqueda").slideDown();
+                    }
+                });
+
+                // Dropdown de carrito de compra
+
+                $('#btnCarrito').click(function () {
+                    $("#carrito").slideDown();
+                });
+
+                $(window).scroll(function () {
+                    $('#inicioSesion').fadeOut();
+                    $('#carrito').hide();
+                });
+
+                $("#btnAcceder").click(function () {
+                    $("#inicioSesion").fadeToggle();
+                });
+
+                var dataTooltip = $('[data-toggle="tooltip"]');
+
+                if(dataTooltip.length) {
+                    dataTooltip.tooltip();
+                }
+            };
+        </script>
         {% block carrusel %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
     </head>
@@ -39,32 +75,35 @@
                                 <li><a href="#" title="Sobre nosotros">Sobre nosotros</a></li>
                             </ul>
                             <ul id="areaClientes" class="list-inline col-sm-2">
-                                <li>
+                                <li style="z-index: 100">
                                     <button type="button" class="dropdown-toggle btn-link" data-toggle="dropdown" id="btnAcceder" title="Acceder">Acceder <span class="caret"></span></button>
-                                    <ul class="dropdown-menu" role="menu" id="dropInicioSesion">
-                                        <li id="itemInicio">
-                                            <h3 id="cabeceraInicio">Iniciar sesión</h3>
+                                    <ul class="inicioSesion" id="inicioSesion" style="display: none; z-index: 1000; position: absolute; background-color: white; padding-left: 0; border-radius: 3px; border: 1px solid #cecece">
+                                        <li id="itemInicio" style="list-style-type: none">
+                                            <h3 id="cabeceraInicio" style="text-align: center">Iniciar sesión</h3>
                                             <form id="formInicio">
                                                 <div class="row" id="rowForm1">
                                                     <div class="form-group col-sm-12">
                                                         <label for="usuario">Usuario:</label>
-                                                        <input type="text" name="usuario" id="usuario" class="form-control">
+                                                        <input type="text" name="usuario" id="usuario"
+                                                               class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row" id="rowForm2">
                                                     <div class="form-group col-sm-12">
                                                         <label for="contrasena">Contraseña:</label>
-                                                        <input type="password" name="contrasena" id="contrasena" class="form-control">
+                                                        <input type="password" name="contrasena" id="contrasena"
+                                                               class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row" id="rowForm3">
                                                     <div class="col-sm-12 col-sm-offset-1">
-                                                        <a href="{{ path('registro') }}" title="¿No estás registrado?">¿No estás registrado?</a>
+                                                        <a href="{{ path('registro') }}" title="¿No estás registrado?" style="text-decoration: underline !important;">¿No estás registrado?</a>
                                                     </div>
                                                 </div>
                                                 <div class="row" id="rowForm4">
                                                     <div class="col-sm-12 col-sm-offset-2">
-                                                        <input type="submit" value="Iniciar sesión" class="btn btn-success" id="btnEnviar">
+                                                        <input type="submit" value="Iniciar sesión"
+                                                               class="btn btn-success" id="btnEnviar">
                                                     </div>
                                                 </div>
                                             </form>
@@ -99,8 +138,9 @@
                     </div>
                 </header>
             <section id="categorias">
-                <a href="{{ path('index') }}" style="font-size: 24px; display: block; padding-top: 10px" id="inicio">AudioMaster - Tienda de instrumentos</a>
-                {#<iframe src="{{ asset('banner/index.html') }}" style="width: 324px; height: 54px" frameBorder="0"></iframe>#}
+                <div class="row">
+                    <a href="{{ path('index') }}" style="font-size: 24px; display: block; padding-top: 10px;" id="inicio" class="col-sm-offset-3 col-sm-5">AudioMaster - Tienda de instrumentos</a>
+                </div>
                 <ul class="list-inline">
                     {{ render(controller('indexBundle:Categoria:categoria')) }}
                     <li>
@@ -134,68 +174,6 @@
 
             {% block body %}{% endblock %}
         </div>
-            <script>
-                window.onload = function () {
-
-                    // Mostrar input de búsqueda
-
-                    $("#btnBuscar").click(function () {
-                        if($("#divBusqueda").css("display") == "block") {
-                            $("#divBusqueda").slideUp();
-                        }
-                        else {
-                            $("#divBusqueda").slideDown();
-                        }
-                    });
-
-                    // Dropdown de inicio de sesión
-
-                    $('#btnAcceder').click(function () {
-                        dropDownFixPosition($('.caret'), $('.dropdown-menu'));
-                    });
-
-                    // Dropdown de carrito de compra
-
-                    $('#btnCarrito').click(function () {
-                        $("#carrito").slideDown();
-                    });
-
-                    $('[data-toggle="tooltip"]').tooltip();
-
-                    $(window).scroll(function () {
-                        $('#dropInicioSesion').hide();
-                        $('#carrito').hide();
-                    });
-
-                    $("body").click(function (e) {
-
-                        // Para dropdown de acceder
-                        if(e.target.id == "btnAcceder" || e.target.id == "itemInicio" || e.target.id == "cabeceraInicio" || e.target.id == "formInicio" || e.target.id == "usuario" || e.target.id == "contrasena" || e.target.id == "dropInicioSesion" || e.target.id == "rowForm1" || e.target.id == "rowForm2" || e.target.id == "rowForm3" || e.target.id == "rowForm4")
-                        {
-                            $("#dropInicioSesion").fadeIn();
-                        }
-                        else {
-                            $("#dropInicioSesion").fadeOut();
-                        }
-
-                        // arreglo dropdown carrito
-
-                        if(e.target.id != "btnCarrito" && e.target.id != "iconoCarrito") {
-                            $("#carrito").slideUp();
-                        }
-                        else {
-                            $("#carrito").slideDown();
-                        }
-                    });
-                };
-
-                function dropDownFixPosition(button, dropdown) {
-                    var dropDownTop = button.offset().top + button.outerHeight();
-
-                    dropdown.css('top', dropDownTop + 'px');
-                    dropdown.css('left', button.offset().left - 120 + 'px');
-                }
-            </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

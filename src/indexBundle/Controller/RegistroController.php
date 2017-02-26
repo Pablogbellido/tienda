@@ -26,7 +26,23 @@ class RegistroController extends Controller
             if($usuRepe) {
                 $this->get("session")
                         ->getFlashBag()
-                        ->add("error", "ERROR: El usuario introducido debe ser único.");
+                        ->add("error", "ERROR: Debe introducir otro usuario único.");
+            }
+            else {
+                $cliente->setUsuario($usuario)
+                        ->setContrasena($contrasena)
+                        ->setNombre($nombre)
+                        ->setApellidos($apellidos)
+                        ->setEmail($email);
+
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($cliente);
+                $em->flush();
+
+                $this->get("session")
+                    ->getFlashBag()
+                    ->add("exito", "Usuario '" . $usuario . "' registrado con éxito.");
             }
         }
 

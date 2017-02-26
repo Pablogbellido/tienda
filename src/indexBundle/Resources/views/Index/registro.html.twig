@@ -19,6 +19,11 @@
          <p>{{ error }}</p>
      </div>
     {% endfor %}
+    {% for exito in app.session.flashbag.get("exito") %}
+        <div class="alert alert-success alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto; margin-top: 10px">
+            <span class="glyphicon glyphicon-ok"></span><p>{{ exito }}</p>
+        </div>
+    {% endfor %}
 <h1 style="text-align: center">Registro</h1>
     <form action="{{ path('registro') }}" class="col-sm-offset-4 col-sm-4" method="post" id="formRegistro">
         <div class="form-group">
@@ -78,7 +83,7 @@
             if($("#mensajeError").length) {
                 setTimeout(function () {
                     $("#mensajeError").fadeOut("slow");
-                }, 5000);
+                }, 6000);
             }
         });
     </script>
