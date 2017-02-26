@@ -25,14 +25,12 @@ class IndexController extends Controller
 
         shuffle($fotos);
 
-        // -------------------------- FIN FOTOS -------------------------
-
         // -------------------- Novedades ----------------
 
         $em = $this->getDoctrine()->getManager();
 
         $novedades = $em->createQuery(
-            "SELECT p.marca, p.modelo, p.descripcion, p.precio, i.url 
+            "SELECT p.id, p.marca, p.modelo, p.descripcion, p.precio, i.url 
                 FROM indexBundle:Producto p,
                       indexBundle:Imagen i,
                       indexBundle:ImagenTieneProducto itp
@@ -79,7 +77,7 @@ class IndexController extends Controller
         // ---------- Últimas unidades ---------
 
         $query = $em->createQuery(
-            "SELECT p.marca, p.modelo, p.descripcion, p.precio, i.url, p.stockActual 
+            "SELECT p.id, p.marca, p.modelo, p.descripcion, p.precio, i.url, p.stockActual 
                 FROM indexBundle:Producto p,
                       indexBundle:Imagen i,
                       indexBundle:ImagenTieneProducto itp

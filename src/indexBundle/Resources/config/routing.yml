@@ -17,3 +17,7 @@ login:
 logout:
     path: /logout
     defaults: { _controller: indexBundle:Login:logout}
+
+producto:
+    path: /producto/{id}
+    defaults: { _controller: indexBundle:Producto:index}
