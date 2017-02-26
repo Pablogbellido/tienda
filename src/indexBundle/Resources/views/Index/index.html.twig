@@ -15,8 +15,21 @@
         }
     </style>
 {% endblock %}
-
 {% block body %}
+    {% for error in app.session.flashbag.get("errorSesion") %}
+        <div class="errorSesion" style="background-color: black">
+            <div class="alert alert-danger alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto;">
+                <p>{{ error }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    {% for cerrarSesion in app.session.flashbag.get("cerrarSesion") %}
+        <div class="errorSesion" style="background-color: black">
+            <div class="alert alert-success alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto;">
+                <p>{{ cerrarSesion }}</p>
+            </div>
+        </div>
+    {% endfor %}
     <div class="row" id="filaCarrusel">
         <div class="col-sm-12">
             <div class="owl-carousel" id="carruselImagenes">
@@ -86,6 +99,12 @@ Unidades vendidas: {{ masVendido.cant }}">
                 items: 1,
                 autoPlay: true
             });
+
+            if($("#mensajeError").length) {
+                setTimeout(function () {
+                    $("#mensajeError").fadeOut("slow");
+                }, 5000);
+            }
         });
     </script>
 {% endblock %}

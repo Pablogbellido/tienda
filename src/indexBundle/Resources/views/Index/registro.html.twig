@@ -21,7 +21,7 @@
     {% endfor %}
     {% for exito in app.session.flashbag.get("exito") %}
         <div class="alert alert-success alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto; margin-top: 10px">
-            <span class="glyphicon glyphicon-ok"></span><p>{{ exito }}</p>
+            <p><span class="glyphicon glyphicon-ok"></span> {{ exito }}</p>
         </div>
     {% endfor %}
 <h1 style="text-align: center">Registro</h1>

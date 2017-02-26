@@ -26,7 +26,7 @@ class RegistroController extends Controller
             if($usuRepe) {
                 $this->get("session")
                         ->getFlashBag()
-                        ->add("error", "ERROR: Debe introducir otro usuario único.");
+                        ->add("error", "ERROR: Debe introducir otro usuario que sea único.");
             }
             else {
                 $cliente->setUsuario($usuario)

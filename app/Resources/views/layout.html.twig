@@ -75,24 +75,24 @@
                                 <li><a href="#" title="Sobre nosotros">Sobre nosotros</a></li>
                             </ul>
                             <ul id="areaClientes" class="list-inline col-sm-2">
+                                {% block cliente %}
+                                    {% if app.session.get("usuario") is null %}
                                 <li style="z-index: 100">
                                     <button type="button" class="dropdown-toggle btn-link" data-toggle="dropdown" id="btnAcceder" title="Acceder">Acceder <span class="caret"></span></button>
                                     <ul class="inicioSesion" id="inicioSesion" style="display: none; z-index: 1000; position: absolute; background-color: white; padding-left: 0; border-radius: 3px; border: 1px solid #cecece">
                                         <li id="itemInicio" style="list-style-type: none">
                                             <h3 id="cabeceraInicio" style="text-align: center">Iniciar sesión</h3>
-                                            <form id="formInicio">
+                                            <form id="formInicio" action="{{ path('login') }}" method="post">
                                                 <div class="row" id="rowForm1">
                                                     <div class="form-group col-sm-12">
                                                         <label for="usuario">Usuario:</label>
-                                                        <input type="text" name="usuario" id="usuario"
-                                                               class="form-control">
+                                                        <input type="text" name="usuario" id="usuario" class="form-control" required style="padding-left: 10px">
                                                     </div>
                                                 </div>
                                                 <div class="row" id="rowForm2">
                                                     <div class="form-group col-sm-12">
                                                         <label for="contrasena">Contraseña:</label>
-                                                        <input type="password" name="contrasena" id="contrasena"
-                                                               class="form-control">
+                                                        <input type="password" name="contrasena" id="contrasena" class="form-control" required style="padding-left: 10px">
                                                     </div>
                                                 </div>
                                                 <div class="row" id="rowForm3">
@@ -102,14 +102,25 @@
                                                 </div>
                                                 <div class="row" id="rowForm4">
                                                     <div class="col-sm-12 col-sm-offset-2">
-                                                        <input type="submit" value="Iniciar sesión"
-                                                               class="btn btn-success" id="btnEnviar">
+                                                        <input type="submit" value="Iniciar sesión" class="btn btn-success" id="btnEnviar">
                                                     </div>
                                                 </div>
                                             </form>
                                         </li>
                                     </ul>
                                 </li>
+                                {% else %}
+                                <li>
+                                    Bienvenido, {{ app.session.get("usuario") }}
+                                </li>
+                                <li>
+                                    <a href="#" title="Acceder al panel de control"><span class="glyphicon glyphicon-cog" style="font-size: 14px"></span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('logout') }}" title="Cerrar sesión"><span class="glyphicon glyphicon-off" style="font-size: 14px"></span></a>
+                                </li>
+                                {% endif %}
+                                {% endblock %}
                             </ul>
 
                             <ul id="redesSociales" class="list-inline col-sm-2">

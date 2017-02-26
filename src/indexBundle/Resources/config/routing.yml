@@ -9,3 +9,11 @@ categoria:
 registro:
     path: /registro
     defaults: { _controller: indexBundle:Registro:registro}
+
+login:
+    path: /login
+    defaults: { _controller: indexBundle:Login:login}
+
+logout:
+    path: /logout
+    defaults: { _controller: indexBundle:Login:logout}
