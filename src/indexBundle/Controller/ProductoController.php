@@ -11,7 +11,7 @@ class ProductoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery(
-            "SELECT p.marca, p.modelo, p.descripcion, p.precio, i.url, c.nombre categoria
+            "SELECT p.marca, p.modelo, p.descripcion, p.precio, p.stockActual, i.url, c.nombre categoria
                 FROM indexBundle:Producto p,
                       indexBundle:Imagen i,
                       indexBundle:ImagenTieneProducto itp,

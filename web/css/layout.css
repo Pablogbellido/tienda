@@ -1,5 +1,9 @@
 /* Para móviles */
 
+body {
+    overflow-x: hidden;
+}
+
 @media screen and (max-width: 480px) {
 
     .container {
@@ -492,9 +496,9 @@ h3 + ul li a:hover {
 }
 
 div.row #divImagenes img {
-    width: 100px;
+    width: 90px;
     max-width: 110px;
-    max-height: 120px;
+    max-height: 200px;
 }
 
 div.row #divImagenes img + img {
@@ -503,7 +507,7 @@ div.row #divImagenes img + img {
 
 #divImagenes + .col-sm-2 img {
     margin-top: 1.8em;
-    margin-left: 2.8em;
+    /*margin-left: 2.8em;*/
     max-height: 300px;
 }
 
@@ -542,4 +546,8 @@ p + button {
 
 .nav-tabs {
     text-align:center;
+}
+
+#imgPrincipal {
+    max-width: 200px;
 }
