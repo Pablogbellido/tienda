@@ -1,0 +1,93 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+    <style>
+        input[readonly] {
+            box-shadow: none;
+            border: none;
+            cursor: not-allowed;
+        }
+
+        input[readonly]:focus {
+            box-shadow: none;
+            border: none;
+        }
+    </style>
+    {% for exito in app.session.flashbag.get("exito") %}
+        <div class="errorSesion" style="background-color: white; margin-top: 10px">
+            <div class="alert alert-success alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto;">
+                <p><span class="glyphicon glyphicon-ok"></span> {{ exito }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    {% for error in app.session.flashbag.get("error") %}
+        <div class="errorSesion" style="background-color: white; margin-top: 10px">
+            <div class="alert alert-danger alert-dismissable fade in" id="mensajeError" style="width: 60%; margin: auto;">
+                <p><span class="glyphicon glyphicon-ok"></span> {{ error }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    <h1 style="text-align: center; margin-bottom: 20px">Panel de control de <strong>{{ cliente.nombre }} {{ cliente.apellidos }}</strong></h1>
+    <div class="row">
+        <div class="form-group col-sm-2 col-sm-offset-5">
+            <label for="id">ID: </label>
+            <input type="text" name="id" id="id" class="form-control" value="{{ cliente.id }}" readonly disabled style="text-align: left">
+        </div>
+    </div>
+    <form action="{{ path('panelControl') }}" method="post">
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-5">
+                <label for="usuario">Usuario: </label>
+                <input type="text" name="usuario" id="usuario" class="form-control" value="{{ cliente.usuario }}" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-5">
+                <label for="contrasena">Contraseña: </label>
+                <input type="password" name="contrasena" id="contrasena" class="form-control" value="{{ cliente.contrasena }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-5">
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{ cliente.nombre }}" style="text-align: left">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-5">
+                <label for="apellidos">Apellidos: </label>
+                <input type="text" name="apellidos" id="apellidos" class="form-control" value="{{ cliente.apellidos }}" style="text-align: left">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-5">
+                <label for="email">Correo electrónico: </label>
+                <input type="text" name="email" id="email" class="form-control" value="{{ cliente.email }}" style="text-align: left">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-5">
+                <input type="submit" value="Modificar datos" class="btn btn-red form-control">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+
+            var elemento = $("#mensajeError");
+
+            if(elemento.length) {
+                desapareceElemento(elemento)
+            }
+        });
+
+        function desapareceElemento(elemento) {
+            setTimeout(function () {
+                $(elemento).fadeOut("slow");
+            }, 4000);
+        }
+    </script>
+{% endblock %}

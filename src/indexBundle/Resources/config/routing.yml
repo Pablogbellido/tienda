@@ -21,3 +21,7 @@ logout:
 producto:
     path: /producto/{id}
     defaults: { _controller: indexBundle:Producto:index}
+
+panelControl:
+    path: /panelcontrol
+    defaults: { _controller: indexBundle:Cliente:panel}

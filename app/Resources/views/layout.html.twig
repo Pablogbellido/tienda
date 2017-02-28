@@ -114,7 +114,7 @@
                                     Bienvenido, {{ app.session.get("usuario") }}
                                 </li>
                                 <li>
-                                    <a href="#" title="Acceder al panel de control"><span class="glyphicon glyphicon-cog" style="font-size: 14px"></span></a>
+                                    <a href="{{ path('panelControl') }}" title="Acceder al panel de control"><span class="glyphicon glyphicon-cog" style="font-size: 14px"></span></a>
                                 </li>
                                 <li>
                                     <a href="{{ path('logout') }}" title="Cerrar sesión"><span class="glyphicon glyphicon-off" style="font-size: 14px"></span></a>
