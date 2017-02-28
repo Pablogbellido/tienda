@@ -89,7 +89,7 @@
             <div class="row col-sm-offset-6" style="margin-bottom: 70px">
                 {% for producto in productos %}
                     <div class="producto col-sm-3">
-                        <a href="#" title="{{ producto.marca }} {{ producto.modelo }}"><img src="{{ asset( producto.url) }}" alt="{{ producto.marca }} {{ producto.modelo }}">
+                        <a href="{{ path('producto', { "id": producto.id }) }}" title="{{ producto.marca }} {{ producto.modelo }}"><img src="{{ asset( producto.url) }}" alt="{{ producto.marca }} {{ producto.modelo }}">
                             <h3>{{ producto.marca }} {{ producto.modelo }}</h3>
                             <h4>{{ producto.precio }}&euro;</h4>
                         </a>

@@ -23,7 +23,7 @@ class CategoriaController extends Controller
             $idCat = $categoria->getId();
 
             $query = $em->createQuery(
-                "SELECT p.marca, p.modelo, p.precio, p.descripcion, i.url
+                "SELECT p.marca, p.id, p.modelo, p.precio, p.descripcion, i.url
                 FROM indexBundle:Producto p,
                       indexBundle:Imagen i,
                       indexBundle:ImagenTieneProducto itp,

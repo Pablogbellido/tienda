@@ -40,7 +40,7 @@ class ProductoController extends Controller
             return $this->render("indexBundle:Index:producto.html.twig", array("producto" => $producto));
         }
         else {
-            die("El producto no existe");
+            return $this->render("indexBundle:Index:404producto.html.twig");
         }
     }
 }

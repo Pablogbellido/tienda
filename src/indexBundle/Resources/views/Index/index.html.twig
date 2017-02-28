@@ -47,10 +47,10 @@
             {% for novedad in novedades %}
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="#" title="{{ novedad.descripcion }}">
+                        <a href="{{ path('producto', { "id": novedad.id }) }}" title="{{ novedad.descripcion }}">
                             <img src="{{ asset(novedad.url) }}" alt="{{ novedad.marca }} {{ novedad.modelo }}">
                         </a>
-                        <a href="#"><h3>{{ novedad.marca }} {{ novedad.modelo }}</h3></a>
+                        <a href="{{ path('producto', { "id": novedad.id }) }}"><h3>{{ novedad.marca }} {{ novedad.modelo }}</h3></a>
                         <h3>{{ novedad.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
                     </div>
                 </div>
@@ -62,11 +62,11 @@
             {% for masVendido in masVendidos %}
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="#" title="{{ masVendido.descripcion }}
+                        <a href="{{ path('producto', { "id": masVendido.id }) }}" title="{{ masVendido.descripcion }}
 Unidades vendidas: {{ masVendido.cant }}">
                             <img src="{{ asset(masVendido.url) }}" class="imgproducto" alt="{{ masVendido.marca }} {{ masVendido.modelo }}">
                         </a>
-                        <a href="#" title="{{ masVendido.marca }} {{ masVendido.modelo }}"><h3>{{ masVendido.marca }} {{ masVendido.modelo }}</h3></a>
+                        <a href="{{ path('producto', { "id": masVendido.id }) }}" title="{{ masVendido.marca }} {{ masVendido.modelo }}"><h3>{{ masVendido.marca }} {{ masVendido.modelo }}</h3></a>
                         <h3>{{ masVendido.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
                     </div>
                 </div>
@@ -78,11 +78,11 @@ Unidades vendidas: {{ masVendido.cant }}">
             {% for ultUni in ultimasUnidades %}
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="#" title="{{ ultUni.descripcion }}">
+                        <a href="{{ path('producto', { "id": ultUni.id }) }}" title="{{ ultUni.descripcion }}">
                             <img src="{{ asset(ultUni.url) }}" class="imgproducto" alt="{{ ultUni.marca }} {{ ultUni.modelo }}">
                         </a>
                         <span class="badge" style="margin: auto; display: block; width: 32%">Quedan {{ ultUni.stockActual }} unidades</span>
-                        <a href="#" title="{{ ultUni.marca }} {{ ultUni.modelo }}"><h3>{{ ultUni.marca }} {{ ultUni.modelo }}</h3></a>
+                        <a href="{{ path('producto', { "id": ultUni.id }) }}" title="{{ ultUni.marca }} {{ ultUni.modelo }}"><h3>{{ ultUni.marca }} {{ ultUni.modelo }}</h3></a>
                         <h3>{{ ultUni.precio }}&euro; <span class="glyphicon glyphicon-shopping-cart"></span></h3>
                     </div>
                 </div>
