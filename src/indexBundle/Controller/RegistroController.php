@@ -10,6 +10,11 @@ class RegistroController extends Controller
 {
     public function registroAction(Request $request)
     {
+        $contrasena = null;
+        $nombre = null;
+        $apellidos = null;
+        $email = null;
+
         if($request->getMethod() == "POST") {
             $usuario = $request->get("usuario");
             $contrasena = $request->get("contrasena");
@@ -43,9 +48,19 @@ class RegistroController extends Controller
                 $this->get("session")
                     ->getFlashBag()
                     ->add("exito", "Usuario '" . $usuario . "' registrado con éxito.");
+
+                $contrasena = null;
+                $nombre = null;
+                $apellidos = null;
+                $email = null;
             }
         }
 
-        return $this->render('indexBundle:Index:registro.html.twig');
+        return $this->render('indexBundle:Index:registro.html.twig', array(
+            "contrasena" => $contrasena,
+            "nombre" => $nombre,
+            "apellidos" => $apellidos,
+            "email" => $email
+        ));
     }
 }
