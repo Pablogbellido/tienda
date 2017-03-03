@@ -1,0 +1,66 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+     <div id="content">
+        <div class="row">
+                <div id="consultas">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="{{ 'listado' }}"><button class="btn btn-success" >Volver</button></a>
+                            <h3>Consulta de facturas por Agencia de transportes</h3>
+                            <div id="datosFacturas">
+                                <strong>TOTAL DE FACTURAS:</strong>
+                                {% set foo = 0 %}
+                                {% for factura in listadoAgencias1 %}
+                                    {% set foo = foo + 1 %}
+                                {% endfor %}
+                                <span>{{foo}}</span>
+                                {% if foo>0 %}
+                                    <br><br>
+                                    <p> Envios realizados por la agencia <strong>{{ listadoAgencias1.0.transporte }}</strong></p>
+                                    <p> Desde <strong>{{ fechaAntigua }}</strong> Hasta <strong>{{ fechaNueva }}</strong></p>
+                                    <table class="table table-bordered table-striped">
+                                        <tr>
+                                            <th>IdCliente</th>
+                                            <th>Nombre cliente</th>
+                                            <th>Fecha del pedido</th>
+                                        </tr>
+										
+                                        {% for factura in listadoAgencias1 %}
+                                            <tr>
+                                                <td>{{ factura.id }}</td>
+                                                <td>{{ factura.nombre}} {{ factura.apellidos }}</td>
+                                                <td>{{ factura.fecha|date("d/m/Y") }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                {% else %}
+                                    <p>No hay suficientes facturas</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $("#formRegistro").submit(function () {
+                if(!$("#condiciones").is(':checked')) {
+                    alert("Debe aceptar las condiciones del servicio");
+                    return false;
+                }
+            });
+
+            if($("#mensajeError").length) {
+                setTimeout(function () {
+                    $("#mensajeError").fadeOut("slow");
+                }, 6000);
+            }
+        });
+    </script>
+{% endblock %}

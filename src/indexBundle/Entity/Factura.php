@@ -38,6 +38,11 @@ class Factura
      * @var int
      */
     private $tipoPagoId;
+	
+	/**
+     * @var int
+     */
+    private $agenciaId;
 
 
     /**
@@ -163,5 +168,29 @@ class Factura
     public function getTipoPagoId()
     {
         return $this->tipoPagoId;
+    }
+	
+	
+	    /**
+     * Set agenciaId
+     *
+     * @param integer $agenciaoId
+     * @return Factura
+     */
+    public function setAgenciaId($agenciaId)
+    {
+        $this->agenciaId = $agenciaId;
+
+        return $this;
+    }
+
+    /**
+     * Get agenciaId
+     *
+     * @return integer 
+     */
+    public function getAgenciaId()
+    {
+        return $this->agenciaId;
     }
 }

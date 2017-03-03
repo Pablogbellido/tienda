@@ -73,6 +73,10 @@
                                 <li><a href="#" title="Ayuda">Ayuda</a></li>
                                 <li class="separador">|</li>
                                 <li><a href="#" title="Sobre nosotros">Sobre nosotros</a></li>
+								{% if app.session.get("usuario") is not null %}
+                                <li class="separador">|</li>
+                                <li><a href="{{ path('listado') }}">Listados</a></li>
+                                {% endif %}
                             </ul>
                             <ul id="areaClientes" class="list-inline col-sm-2">
                                 {% block cliente %}

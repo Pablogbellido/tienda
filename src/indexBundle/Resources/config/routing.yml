@@ -25,3 +25,15 @@ producto:
 panelControl:
     path: /panelcontrol
     defaults: { _controller: indexBundle:Cliente:panel}
+    
+listado:
+    path: /listado
+    defaults: { _controller: indexBundle:Listado:listado}
+    
+listado1:
+    path: /listado1
+    defaults: { _controller: indexBundle:Listado:listado1}
+    
+listado2:
+    path: /listado2
+    defaults: { _controller: indexBundle:Listado:listado2}

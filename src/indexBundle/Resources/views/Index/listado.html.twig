@@ -1,0 +1,72 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+       <div id="content">
+        <div class="row">
+                <div id="consultas">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>Consulta de facturas por Agencia de transportes</h3>
+                            <form action="{{ path('listado1') }}" method="post">
+                                <div class="form-group col-sm-12">
+                                    <label for="agencia1">Agencia: </label>
+                                    <select name="agencia1" id="agencia1" class="form-control">
+                                        {#<option value="" selected disabled>-- Agencia --</option>#}
+                                        {% for agencia in agencias %}
+                                            <option value="{{ agencia.id }}">{{ agencia.nombre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="fecha11">Fecha inicial:</label>
+                                    <input type="date" name="fecha11" id="fecha11" class="form-control" value="{{ fechaAntigua.0.fecha|date("Y-m-d") }}" min="{{ fechaAntigua.0.fecha|date("Y-m-d") }}" max="{{ fechaNueva.0.fecha|date("Y-m-d") }}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="fecha21">Fecha final:</label>
+                                    <input type="date" name="fecha21" id="fecha21" class="form-control" value="{{ fechaNueva.0.fecha|date("Y-m-d") }}" min="{{ fechaAntigua.0.fecha|date("Y-m-d") }}" max="{{ fechaNueva.0.fecha|date("Y-m-d") }}">
+                                </div>
+                                <input type="submit" value="Comprobar facturas por fecha" class="btn btn-primary col-sm-12" style="margin-bottom: 20px" id="btnFactura">
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>Consulta de facturas por uso de clientes</h3>
+                            <form action="{{ path('listado2') }}" method="post">
+
+                                <div class="form-group col-sm-6">
+                                    <label for="fecha12">Fecha inicial:</label>
+                                    <input type="date" name="fecha12" id="fecha12" class="form-control" value="{{ fechaAntigua.0.fecha|date("Y-m-d") }}" min="{{ fechaAntigua.0.fecha|date("Y-m-d") }}" max="{{ fechaNueva.0.fecha|date("Y-m-d") }}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="fecha22">Fecha final:</label>
+                                    <input type="date" name="fecha22" id="fecha22" class="form-control" value="{{ fechaNueva.0.fecha|date("Y-m-d") }}" min="{{ fechaAntigua.0.fecha|date("Y-m-d") }}" max="{{ fechaNueva.0.fecha|date("Y-m-d") }}">
+                                </div>
+                                <br>
+                                <input type="submit" value="Comprobar facturas por fecha" class="btn btn-primary col-sm-12" style="margin-bottom: 20px" id="btnFactura2">
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $("#formRegistro").submit(function () {
+                if(!$("#condiciones").is(':checked')) {
+                    alert("Debe aceptar las condiciones del servicio");
+                    return false;
+                }
+            });
+
+            if($("#mensajeError").length) {
+                setTimeout(function () {
+                    $("#mensajeError").fadeOut("slow");
+                }, 6000);
+            }
+        });
+    </script>
+{% endblock %}
